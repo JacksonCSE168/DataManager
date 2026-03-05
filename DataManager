@@ -1,0 +1,29 @@
+mport java.util.ArrayList;
+import java.util.List;
+
+public class DataManager <T extends Entity> {
+    private List<T> list = new ArrayList<>();
+
+    public void add(T item){
+        list.add(item);
+    }
+
+    public T findById(String id){
+        for(T item : list){
+            if(item.getId().equals(id)){
+
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public boolean delete (String id){
+        T item = findById(id);
+        if(item != null){
+            list.remove(item);
+            return true;
+        }
+        return false;
+    }
+}
